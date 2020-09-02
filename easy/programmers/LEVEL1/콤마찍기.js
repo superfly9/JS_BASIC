@@ -21,3 +21,17 @@ let result = arr.map((numberValue,index)=>{
 }).reverse().join('');
 
 console.log(result);
+
+//재귀함수 이용
+
+//String.slice()는 기존의 문자열을 바꾸지는 않는다
+//새로운 문자열을 반환할 뿐
+//String.slice(시작인덱스,종료인덱스)=>시작~종료인덱스-1까지의 문자열을 자른다
+let string = "123456789";
+
+const makeComma = (string) => {
+  if (string.length<=3) return string;
+  //  맨 뒤 문자열 3개와 나머지를 자르는 역할을 하는 함수, 앞의 문자열은 계속 뒷문자열 3개씩을 잘라야
+ return `${makeComma(string.slice(0,string.length-3))},${string.slice(string.length-3)}`
+}
+console.log(makeComma(string)); // 123,456,789
