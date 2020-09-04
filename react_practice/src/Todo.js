@@ -1,28 +1,37 @@
 import React, { Fragment,useState } from 'react'
 
 function Todo() {
-    const [todo,setTodo] = useState([]);
+    const [todoList,setTodo] = useState([]);
     const [currentId,setCurrentId] = useState(1);
-    const [value,setValue] = useState('');
-    const renderToto = todo.map((todoInfo,index)=>(
-        <Fragment>
+    const [descValue,setDescValue] = useState('');
+
+    const handleDelete = () =>{
+
+    }
+    const renderTodo = todoList.map((todoInfo,index)=>(
             <li key={index+1} className='todo_list'> 
-                {todoInfo}
+                <span>{todoInfo.descValue}</span>
+                <button data-id={currentId} onClick={handleDelete}>삭제</button>
             </li>
-            <button>삭제</button>
-        </Fragment>
     ))
     const addTodo = (e) =>{
+        const todo = {
+            currentId , 
+            descValue
+        }
+        setTodo([...todoList,todo])
+        setCurrentId(currentId+1);
         console.log(e,e.currentTarget)
     }
-    const handleChange = (e) => setValue(e.currentTarget.value); 
+    const handleChange = (e) => setDescValue(e.currentTarget.value); 
     return (
         <div>
-            <input onChange={handleChange} />
-            <button onClick={addTodo}>추가</button>
+            <h3>할 일 목록</h3>
             <ul>
-                {renderToto}
+                {renderTodo}
             </ul>    
+            <input value={descValue} onChange={handleChange} />
+            <button onClick={addTodo}>추가</button>
         </div>
     )
 }
