@@ -12,6 +12,7 @@ const solution = (arr) =>{
         //숫자가 두 자리수 이상이면 각각을 쪼갠다
         value = String(value).split('')
         
+        
         value.forEach(targetValue=>{
           let index = Number(targetValue)
           str+=keyArr[index];
