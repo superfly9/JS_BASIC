@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <p>클로저를 사용한 Counting</p>
+    <button id="increase">+</button>
+    <button id="decrease">-</button>
+    <p id="count">0</p>
+    <script>
+      var increaseBtn = document.getElementById("increase");
+      var decreaseBtn = document.getElementById("decrease");
+      var count = document.getElementById("count");
+
+      var increase = (function () {
+        // 카운트 상태를 유지하기 위한 자유 변수
+        var counter = 0;
+        // 클로저를 반환
+        return function () {
+          return ++counter;
+        };
+      })();
+
+      increaseBtn.onclick = function () {
+        count.innerHTML = increase();
+      };
+      /*
+      var decrease = (function () {
+        return function () {
+          return --counter;
+        };
+      })(); => 이런식으로 하면 counter변수를 참조할수XXX=>class의 method형태로 바꿔볼것
+      
+      decreaseBtn.onclick = function () {
+        count.innerHTML = decrease();
+      };
+      */
+    </script>
+  </body>
+</html>
