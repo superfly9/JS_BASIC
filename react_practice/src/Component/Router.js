@@ -48,42 +48,43 @@ function About() {
   return <h2>About</h2>;
 }
 
-function Topics(props) {
+const Topics = () =>{
   let match = useRouteMatch();
-    console.log('match:',match,'props:',props)
+  console.log('match:',match)
+    // <Route path='/topics />실행시 path로 넘겨준 값들이 match로 전달
+    // match : {url:'/topics",path:'/topics',params: {}}
   return (
     <div>
       <h2>Topics</h2>
-
+      {/* routing할 경로 설정 */}
       <ul>
         <li>
-          <Link to={`${match.url}/Seoul`}>Seoul</Link>
+          <Link to={`${match.path}/seoul`}>Seoul</Link>
         </li>
         <li>
-          <Link to={`${match.url}/Lite`}>
-            Lite For me
-          </Link>
+          <Link to={`${match.path}/lite`}>Lite For ME</Link>
         </li>
       </ul>
-
-      {/* The Topics page has its own <Switch> with more routes
-          that build on the /topics URL path. You can think of the
-          2nd <Route> here as an "index" page for all topics, or
-          the page that is shown when no topic is selected */}
       <Switch>
-        <Route path={`${match.path}/:topicId`}>
+        {/* 경로 일치시 보여줄 컴포넌트를 설정 */}
+        <Route path={`${match.path}/:topicId`} >
           <Topic />
         </Route>
-        <Route path={match.path}>
-          <h3>Please select a topic.</h3>
+        <Route path={match.url} >
+          <h3>Please Select Topic</h3>
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-function Topic() {
-  let { topicId } = useParams();
-  console.log('useParams:',useParams()) // url/:변수 사용시 useParams()에는 {변수:값}이 담긴다
-  return <h3>Requested topic ID: {topicId}</h3>;
-}`
+const Topic = () => {
+  let {topicId} = useParams();
+  console.log('useParams:',useParams()) 
+  //<Route path={`${match.path}/:topicId`} >
+  //useParams: {topicId: "Lite"}
+  // path = {url/:변수} 사용시 useParams()에는 {변수명:값}이 담긴다
+  return (
+  <h3>Topic Id is:{topicId}</h3>
+  )
+}
