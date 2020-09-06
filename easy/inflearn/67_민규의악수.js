@@ -49,3 +49,20 @@ const handClap = (n) => {
   };
   console.log(handClap(67)); // [1,13] => 민규의 악수 횟수 1=67 - (12*11)/2
   console.log(handClap(59)); // [4,12] => 민규의 악수 횟수 4=59 - (11*10)/2
+
+  //sol2
+
+  const handClap2 = (n) => {
+    let clapSum = 0; //민규 제외한 사람들의 악수 횟수
+    let people = 0;
+    let temp = 0;
+    while (true) {
+        clapSum = parseInt(people * (people-1)/2,10);
+        if (clapSum<n) {
+            break;
+        }
+        people++;
+        temp  = clapSum;
+    }
+    return [parseInt(n-temp), people] ;
+  }
