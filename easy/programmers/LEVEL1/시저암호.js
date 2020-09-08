@@ -18,6 +18,18 @@ function solution(s, n) {
     return result;
 }
 
+//다른 사람 것 참고
+function solution(s, n) { 
+    return s.split("").map(e => { 
+        if(" " == e) return e; 
+        
+        return e.toUpperCase().charCodeAt(0) + n > 90 
+                ? String.fromCharCode(e.charCodeAt(0)+n-26) 
+                : String.fromCharCode(e.charCodeAt(0)+n); 
+            }).join(""); 
+}
+
+
 //아스키 안 쓴 것 중 참고한것
 function solution(s, n) {
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
