@@ -4,7 +4,7 @@ function solution(n) {
     String(n).split('').forEach(v=>sum+=Number(v));
     return sum;
 }
-//참고할만했던 것, 숫자+''하면 문자열이 되고, 문자*1은 숫자가 된다.
+//참고할만했던 것, 숫자+''(빈문자열)하면 문자열이 되고, 문자*1은 숫자가 된다.
 function solution(n) {
     var a = (n + '').split('');
     var b = 0;
