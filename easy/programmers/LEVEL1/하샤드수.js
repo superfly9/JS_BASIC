@@ -12,6 +12,9 @@ arr	return
 */
 function solution(x) {
     let sum = 0;
+    //1.입력된 수를 배열로 만듦(String(x).split(''))
+    //2.배열의 원소가 각각의 '숫자'이므로 숫자로 형변환 후 sum에 누적
+    //3.주어진 숫자x가 sum으로 나누어지는지를 확인
     String(x).split('')
              .forEach((v,i)=>sum+=parseInt(v,10));
     return x%sum === 0 ? true : false
