@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Counter from './3장/Component/Counter';
+import Counter from './Counter';
 
 export default function App () {
     return (

@@ -12,7 +12,7 @@ console.log(arr3.push('Lite'),arr3,arr1); =>4, [1, 2, 3, "Lite"],[1, 2, 3, "Seou
 */
 
 
-//풀이1
+//내 풀이1
 function solution(arr) {
     let answer = [];
     if(arr.length===1){ //값이 하나일땐 제거하면 무조건 빈 배열이므로
@@ -25,7 +25,7 @@ function solution(arr) {
 }
 
 
-//풀이2
+//다른 사람의 풀이
 function solution(arr) {
     var answer = [];
     var lengthOfArr = arr.length;
