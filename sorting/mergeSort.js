@@ -36,7 +36,7 @@ console.log(mergeSort(arr));
 
 
 //sol2 
-divide = (array) => {
+const divide = (array) => {
     if (array.length < 2) {
         return array
     }
@@ -46,7 +46,7 @@ divide = (array) => {
     return sort(divide(smallOne), divide(smallTwo))
 }
 
-sort = (smallOne, smallTwo) => {
+const sort = (smallOne, smallTwo) => {
     const sorted = []
     while (smallOne.length && smallTwo.length) {
         if (smallOne[0] <= smallTwo[0]) {
