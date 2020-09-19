@@ -56,7 +56,6 @@ const sort = (smallOne, smallTwo) => {
         }
     }
     const output = [...sorted, ...smallOne, ...smallTwo]
-    console.log(output)
     return output
 }
 
