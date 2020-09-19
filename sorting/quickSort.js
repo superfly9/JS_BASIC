@@ -9,11 +9,11 @@ const quickSort = (arr) => {
       right.push(arr[i]);
     } else {
       left.push(arr[i]);
-    }
-  console.log("j:", j, left, "pivot:", `${pivot}`, right);
+    } 
+  console.log("i:", i, left, "pivot:", `${pivot}`, right);
   }
   //for문 전체 종료시마다 pivot기준으로 작은값이 left, 큰 값이 right에 담김
-  return quickSort(left).concat(pivot,quickSort(right));
+  return [...quickSort(left),...pivot,...quickSort(right)];
 };
 const arr = [ 77, 54, 132, 10, 135, 11, 15];
 //결과 [10, 11, 15, 54, 77, 132, 135]
