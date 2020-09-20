@@ -1,7 +1,7 @@
 //배열의 처음 원소를 Pivot으로
 const quickSort = (arr) => {
   if (arr.length <= 1) return arr;
-  const pivot = [arr[0]];
+  const pivot = [arr[Math.floor(arr.length/2)]];
   let left = [];
   let right = [];
   for (let i = 1; i < arr.length; i++) {
