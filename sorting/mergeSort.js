@@ -37,9 +37,7 @@ console.log(mergeSort(arr));
 
 //sol2 
 const divide = (array) => {
-    if (array.length < 2) {
-        return array
-    }
+    if (array.length < 2)  return array
     const mid = Math.floor(array.length / 2)
     const smallOne = array.slice(0, mid)
     const smallTwo = array.slice(mid)
@@ -51,8 +49,7 @@ const merge1 = (smallOne, smallTwo) => {
     while (smallOne.length && smallTwo.length) {
         smallOne[0] <= smallTwo[0] ? sorted.push(smallOne.shift()) : sorted.push(smallTwo.shift())
     }
-    const output = [...sorted, ...smallOne, ...smallTwo]
-    return output
+    return [...sorted, ...smallOne, ...smallTwo]
 }
 
 const numbers = [8, 5, 6, 9, 3, 1, 4, 2, 7, 10]
