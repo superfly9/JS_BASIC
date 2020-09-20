@@ -43,17 +43,13 @@ const divide = (array) => {
     const mid = Math.floor(array.length / 2)
     const smallOne = array.slice(0, mid)
     const smallTwo = array.slice(mid)
-    return sort(divide(smallOne), divide(smallTwo))
+    return merge1(divide(smallOne), divide(smallTwo))
 }
 
-const sort = (smallOne, smallTwo) => {
-    const sorted = []
+const merge1 = (smallOne, smallTwo) => {
+    const sorted = [] //결과 담을 배열이 필요(quick sort에 비해 메모리를 추가적으로 써야 한다)
     while (smallOne.length && smallTwo.length) {
-        if (smallOne[0] <= smallTwo[0]) {
-            sorted.push(smallOne.shift())
-        } else {
-            sorted.push(smallTwo.shift())
-        }
+        smallOne[0] <= smallTwo[0] ? sorted.push(smallOne.shift()) : sorted.push(smallTwo.shift())
     }
     const output = [...sorted, ...smallOne, ...smallTwo]
     return output
