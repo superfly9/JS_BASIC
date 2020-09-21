@@ -18,3 +18,19 @@ const bubbleSort = (array) => {
 };
 console.log(bubbleSort(items));
 //[1, 2, 5, 9, 10, 15, 18, 18, 32, 63, 88]
+
+
+//swap하는 코드를 바꿔봄
+let items2 = [18, 1, 9, 2, 5, 10, 15, 32, 88, 63, 18];
+
+const bubbleSort2 = (arr)=>{
+  for (let i=0;i<arr.length;i++) {
+      for (let j=1;j<arr.length-i;j++) {
+          if (arr[j-1]>arr[j]) {
+              [arr[j-1],arr[j]] = [arr[j],arr[j-1]]
+          }
+      }
+  }
+  return arr;
+}
+console.log(bubbleSort2(items2));

@@ -18,24 +18,54 @@ const quickSort = (arr) => {
 };
 const arr = [77, 54, 132, 10, 135, 11, 15];
 //결과 [10, 11, 15, 54, 77, 132, 135]
-console.log(quickSort(arr))
+// console.log(quickSort(arr))
 
-//sol2) in place 방식
+//sol2) 
+let arr2 = [5,8,6,9,10,7]
 
-function inPlaceQuickSort (array, left = 0, right = array.length - 1) {
-  if (left >= right) {
-    return;
-  }
-  const mid = Math.floor(array.length / 2)
-  const pivot = array[mid];
-  const partition = divide(array, left, right, pivot)
-  
-  inPlaceQuickSort(array, left, partition - 1)
-  inPlaceQuickSort(array, partition, right)
- function divide (array,left,right,pivot)  {
-  console.log(`array: ${array}, left: ${array[left]}, pivot: ${pivot}, right: ${array[right]}`)
-  while (left<=right) {
-    
-  }
- }
+function swap (list,left,right) {
+  [list[left],list[right]]= [list[right],list[left]];
 }
+
+function partition (list,left,right) {
+  let middle = Math.floor((left+right/2)),
+      pivot  = list[middle],
+      i = left,
+      j = right
+  while (i<=j) {
+    if (list[i]<pivot) {
+      i++
+    }
+    console.log('II:',i)
+    if (list[j]>pivot) {
+      j--
+    }
+    console.log('Before:','i:',i,'j:',j)
+    if (i<=j) {
+      swap(list,i,j);
+      i++;
+      j--
+    }
+  }
+
+  // i++,j--를 2번 해야하는 이유 설명할 수 있어여
+  console.log('After:','i:',i,'j:',j)
+  return i
+}
+
+//in place방식
+function quickSort2 (list,left,right) {
+  let index;
+  if (list.length>1) {
+    index = partition(list,left,right);
+    if (left < index-1) {
+      quickSort2(list,left,index-1);
+    }
+    if (right>index) {
+      quickSort2(list,index,right)
+    }
+  }
+  return list;
+}
+let sortedArr = quickSort2(arr2,0,arr2.length-1)
+console.log('Sorted:',sortedArr)
