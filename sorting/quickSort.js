@@ -1,6 +1,6 @@
 //배열의 처음 원소를 Pivot으로
 const quickSort = (arr) => {
-  if (arr.length <= 1) return arr;
+  if (arr.length<2) return arr;
   const pivot = [arr[Math.floor(arr.length / 2)]];
   //다른 배열이 추가로 필요하기에 not in place + pivot이 맨 처음 원소인 것도 좋지 않다
   let left = [];
@@ -48,7 +48,6 @@ function partition (list,left,right) {
     }
   }
 
-  // i++,j--를 2번 해야하는 이유 설명할 수 있어여
   console.log('After:','i:',i,'j:',j)
   return i
 }

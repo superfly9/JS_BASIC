@@ -1,26 +1,17 @@
-let divide = (array)=> {
-    if (array.length<2) {
-        return array;
+let divide = (arr) =>{
+    if (arr.length<2) {
+        return arr;
     }
-    let mid = Math.floor(array.length/2);
-    let left = array.slice(0,mid);
-    let right= array.slice(mid);
-    return sort(divide(left),divide(right));
+    let middle = Math.floor(arr.length/2);
+    let left = arr.slice(0,middle)
+    let right = arr.slice(middle);
+    return merge(divide(left),divide(right));
 }
 
-let sort = (left,right) => {
-    const sorted = [];
-    while (left.length && right.length) {
-        if (left[0]<right[0]) {
-            sorted.push(left.shift())
-        } else {
-            sorted.push(right.shift());
-        }
+let merge = (left,right) => {
+    let result = [];
+    while (left.length>0 && right.length>0) {
+        left[0] < right[0] ? result.push(left.shift()) : result.push(right.shift());
     }
-    console.log('Sorted:',sorted)
-    const output = [...sorted,...left,...right];
-    return output
+    return [...result,...left,...right]
 }
-
-const numbers = [8, 5, 6, 9, 3, 1, 4, 2, 7, 10]
-console.log(divide(numbers))
