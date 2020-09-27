@@ -1,11 +1,13 @@
-import React,{useState, useEffect} from 'react';
-import Counter from './2장/Component/Counter/Counter';
-import Seoul from './2장/Component/Todo/prac';
+import React from 'react';
+import Title from './2장/Component/Counter/Title';
+import Batch from './3장/Batch';
+
+console.log(<Title color='red' awesome='Seoul' >Lite</Title>)
+
+console.log(<a href='#' color='red'>링크</a>)
 
 export default function App () {
   return (
-      <div>
-          <Counter />
-      </div>
+    <Batch />
   )
 }
