@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from './2장/Component/Counter/Title';
-import Batch from './3장/Batch';
+import Batch from './3장/BatchAfter';
 
 console.log(<Title color='red' awesome='Seoul' >Lite</Title>)
 
