@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react';
-import InnerWitdth from './3장/4-hooks2-custom/InnerWidth';
+import userInnerWidth from './3장/4-hooks2-custom/useInnerWidth';
 
 export default function App () {
-    const [userId,setUserId] = useState(0);
+    const width = userInnerWidth()
     return (
         <div>
-            <InnerWitdth />
+            {`width is ${width}`}
         </div>
     )
 }
