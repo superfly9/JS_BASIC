@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import useUser from './useUser';
 
-const Profile = ({userId}) => {
+export default function Profile ({userId})  {
     const user = useUser(userId);
     console.log(user);
     return (
@@ -15,5 +15,4 @@ const Profile = ({userId}) => {
             )}
         </div>
     )
-}
-export default Profile;
+};

@@ -11,7 +11,7 @@ export default function useUser (userId) {
 const USER1 = {name:'React',age:33};
 const USER2 = {name:'Vue',age:56};
 
-const getUserApi = (userId) => {
+function getUserApi (userId) {
     console.log(userId)
     return new Promise((resolve)=>{
         setTimeout(()=>{
