@@ -1,13 +1,15 @@
-import React,{createContext,useContext} from 'react';
+import React,{createContext,useContext,useState} from 'react';
 
 const UserContext = createContext('Seoul');
 const name = 'Seung-chan'
 export default function App () {
+    const [name,setName] = useState('Seung-chan')
         return (
         <div>
             <UserContext.Provider value={name}>
                 <div>상단</div>
                 <Profile />
+                <input value={name} onChange={(e)=>setName(e.target.value)}/>
                 <div>하단</div>
             </UserContext.Provider>
         </div>
