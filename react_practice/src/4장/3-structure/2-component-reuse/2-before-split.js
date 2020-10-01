@@ -2,6 +2,8 @@
 //비즈니스 로직이 없다
 //상태값이 없다(단 ,mouseOver같이 UI위한 상태값은 예외)
 import React,{useState} from 'react';
+import FriendList from './component/FriendList';
+import SelectNumber from './container/SelectNumber';
 import getNextFriend from './data';
 
 export default function App () {
@@ -18,23 +20,15 @@ export default function App () {
     }
     return (
         <div>
-            <h2>친구들아 안녕</h2>
-            <select onChange={handleChange} value={ageLimit}>
-                {AGE_LIMIT_OPTION.map((value,index)=>(
-                    <option key={index+1}>
-                        {value}
-                    </option>
-                ))}
-            </select>
-            세 이하만 보기
             <button onClick={onAdd}>친구 추가</button>
-            <ul>
-                {friendsWithAgeLimit.map(friend=>(
-                    <li key={friend.id}>
-                        {`${friend.name} ${friend.age}`}
-                    </li>
-                ))}
-            </ul>
+            <h2>친구들아 안녕</h2>
+            <SelectNumber 
+            limit_option={AGE_LIMIT_OPTION} 
+            ageLimit={ageLimit}
+            setAgeLimit={setAgeLimit}
+            desc='세 이하만 보기'
+            />
+            <FriendList friends={friendsWithAgeLimit} />
         </div>
     )
 }
