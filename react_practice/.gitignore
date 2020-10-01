@@ -11,6 +11,7 @@
 # production
 /build
 
+5-deps
 # misc
 .DS_Store
 .env.local
