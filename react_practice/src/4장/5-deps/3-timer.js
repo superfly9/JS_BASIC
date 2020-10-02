@@ -34,6 +34,6 @@ function Timer ({initialTotalSeconds}) {
         }
     }, [hour,minutes,second])
     return (
-        <div>{hour}시:{minutes}분:{second}초</div>
+        <div style={{margin:'1rem'}}>{hour}시:{minutes}분:{second}초</div>
     )
 }

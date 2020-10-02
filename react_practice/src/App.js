@@ -24,7 +24,7 @@ function Timer ({initialTotalSeconds}) {
         return ()=>clearInterval(id)
     })
     return (
-        <div>{hour}시:{minutes}분:{second}초</div>
+        <div style={{margin:'1rem'}}>{hour}시:{minutes}분:{second}초</div>
     )
 }
 
