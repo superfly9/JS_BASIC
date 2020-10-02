@@ -15,24 +15,21 @@ function Timer ({initialTotalSeconds}) {
     }
     
     const [state,dispatch] = useReducer(reducer,initialState)
-    const {hour,minutes,second} = {state}
+    const {hour,minutes,second} = state
     useEffect(() => {
         const id = setInterval(()=>{
             dispatch()
-            // dispatch({type:'timer'})
+            // dispatch({type:'timer'}) 이걸로 써도 똑같이 동작
         },1000);
         return ()=>clearInterval(id)
     })
     return (
-        // <div>{hour}시:{minutes}분:{second}초</div>
-        <div>{state.hour}시:{state.minutes}분:{state.second}초</div>
+        <div>{hour}시:{minutes}분:{second}초</div>
     )
 }
 
-function reducer (state) {
-    //action은 사용 X, [state,dispatch]의 state를 reducer의 인자로 받아서 사용
-    //console.log('reducer:',state);
-    
+function reducer (state,action) {
+    //action은 여기서 실제로는 사용 X, [state,dispatch]의 state를 reducer의 인자로 받아서 사용
     const {second,minutes,hour} = state;
     if (second) {
         return {...state,second:second-1}
@@ -41,13 +38,18 @@ function reducer (state) {
     } else {
         return {...state,hour:hour-1,minutes:59,second:59}
     }
-}
-        // if (action.type === 'timer') {
-        //     if (second) {
-        //         return {...state,second:second-1}
-        //     } else if (minutes) {
-        //         return {...state,minutes:minutes-1,second:59}
-        //     } else {
-        //         return {...state,hour:hour-1,minutes:59,second:59}
-        //     }
-        // }
+}           
+
+
+//이걸로 써도 똑같은 타이머 결과
+// if (action.type === 'timer') {
+    //     if (second) {
+    //         return {...state,second:second-1}
+    //     } else if (minutes) {
+    //         return {...state,minutes:minutes-1,second:59}
+    //     } else {
+    //         return {...state,hour:hour-1,minutes:59,second:59}
+    //     }
+    // }
+
+
