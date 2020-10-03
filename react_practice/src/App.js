@@ -1,37 +1,37 @@
-import React,{useState} from 'react';
-import PropTypes from 'prop-types';
-
-MyComponent.propTypes = {
-    value2 : PropTypes.number,
-    value1 : PropTypes.number
-}
+import React,{useState,useRef,useEffect} from 'react';
 
 export default function App () {
-    const [value1,setValue1] = useState(0);
-    const [value2,setValue2] = useState(10);
-    return (
-        <div>
-            <button onClick={()=>setValue1(value1+1)}>value1 증가</button>
-            <button onClick={()=>setValue2(value2+1)}>value2 증가</button>
-            <MyComponent value2={value2} />
-        </div>
-    )
-}
-
-function MyComponent ({value2}) {
-    console.log('MyComponent Rendering')
-    console.log(value2)
+    const [city,setCity] = useState(['Seoul','Gwang-ju','Jeju']);
+    const [newCity,setNewCity] = useState('');
+    const inputRef = useRef();
+    const addCity = () =>{
+        setCity([...city,newCity])
+         //state가 객체일때 올바르게 값을 update(새로운 reference를 가진 객체를 만들어야 리액트가 인식 후 리렌더링)하려면
+         // ...(spread operator)를 사용해서 새로운 reference를 가진 객체를 만들어주자! 배열에 그냥 push/unShift하면 reference 안 바뀌므로 리액트가 새로운 상태라고 인식하지 못하기에
+         setNewCity('');
+    }
+    useEffect(() => {
+        //input.current => input 
+        //input.current.parentNode => <div id='root'></div>
+        inputRef.current.focus();
+    }, [city])
     return (
         <>
-            {/* <p>{`value1값: ${value1}`}</p> */}
-            <p>{`value2값 : ${value2}`}</p>
+            <City 
+              option={city} 
+            />
+            <input ref={inputRef} value={newCity} onChange={(e)=>setNewCity(e.target.value)}/>
+            <button onClick={addCity}>도시 추가</button>
         </>
     )
 }
-//속성값(props) 비교 함수
-// function isEqual (prevProps, nextProps) {
-//     console.log('prevProps:',prevProps)
-//     console.log('nextProps:',nextProps)
-//     return true
-// }
-React.memo(MyComponent);
+
+function City ({option}) {
+    return (
+        <ul>
+            {option.map((item,index)=>(
+                <li key={index+1}>{item}</li>
+            ))}
+        </ul>
+    )
+}
