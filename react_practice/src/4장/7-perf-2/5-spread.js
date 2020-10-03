@@ -5,7 +5,8 @@ export default function App () {
     const [newCity,setNewCity] = useState('');
     const inputRef = useRef();
     const addCity = () =>{
-        //1.state가 객체(혹은 배열)형태일때 잘못된 변경
+        //1.데이터가 바뀌어야 하는데 제대로 바뀌지 않는 경우(state가 객체(혹은 배열)형태일때 잘못된 변경)
+        //이는 데이터와 UI의 불일치를 불러일으킴
         //기존 배열에 push/unshift해주면 배열의 reference가 변하지 않고, 이는 리액트 입장에서 새로운 상태값이라 인식되지 X=>컴포넌트 함수 다시 실행하지 않는다
         city.push(newCity);
         setCity(city);
