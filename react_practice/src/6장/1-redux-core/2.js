@@ -21,9 +21,6 @@ const myReducer = (state,action) => {
 
 const store = createStore(myReducer,applyMiddleware(middleWare1,middleWare2));
 
-//리덕스 실행순서 
-//상태 초기화 위해 리듀서 실행 
-//dispatch발생하면 middleware다 실행 후 reducer실행한다
 store.dispatch({type:'action'});
 export default function App () {
     return <div>리덕스 연습</div>
