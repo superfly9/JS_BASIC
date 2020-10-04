@@ -32,7 +32,8 @@ export default function App () {
 
 /*
 결과
-my Reducer
+my Reducer => 상태값 초기화 위해 middleware 없이 리듀서만 실행
+----- dispatch발생 후:middleware실행 완료 후 리듀서 실행
 mid1 start
 mid2 start
 my Reducer

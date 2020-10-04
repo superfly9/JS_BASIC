@@ -4,15 +4,15 @@ import {createStore,applyMiddleware} from 'redux';
 
 
 const INITIAL_STATE = {name:'승찬'}
-const SEOUL_LITE ='seoul'
+const SEOUL_LITE ='seoul-lite/seoul'
 const seoul_lite = (value)=>({type:SEOUL_LITE,name:value})
 
 
 //3. middleWare
 const printLog = store => next => action => {
-    console.log('Store.getState():',store.getState())  
     console.log(`Prev State: ${JSON.stringify(store.getState())}`)
-    const result = next(action);  //  result === action
+    const result = next(action);
+    console.log('result:',result);
     console.log(`Next State: ${JSON.stringify(store.getState())}`)
     return result;
 }
@@ -21,17 +21,13 @@ const printLog = store => next => action => {
 
 //2. Create reducer
 const reducer = (state=INITIAL_STATE,action) => {
-    console.log('Reducer!',state)
-    const {type} =action
-    switch (type) {
-        case SEOUL_LITE :
-            return {
-                ...state,
-                name : action.name
-            }
-        default:
-            return state
-    }    
+    console.log('Reducer!')
+    if (action.type === SEOUL_LITE) {
+        return {
+            ...state,
+            name : action.name
+        }
+    }
 }
 
 
