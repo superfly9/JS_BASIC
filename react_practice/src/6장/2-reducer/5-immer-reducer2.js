@@ -22,7 +22,7 @@ function reducer (state=INITIAL_STATE,action) {
                 draft.todos = draft.todos.filter(todo => todo.id !== action.id);
                 break;
             default:
-                return state;
+                return draft;
         }
     })
 }

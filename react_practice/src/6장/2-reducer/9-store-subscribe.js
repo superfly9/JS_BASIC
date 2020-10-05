@@ -1,5 +1,4 @@
 //store는 상태 저장과 액션 처리가 끝났다는 것도 알려줌, 이 때 store.subscribe()사용
-import React from 'react';
 import {createStore} from 'redux';
 import produce from 'immer';
 
@@ -38,11 +37,4 @@ function createReducer (initial_state,handlerMap) {
             }
         })
     }
-}
-export default function App () {
-    return (
-        <div>
-            리덕스야 리덕스
-        </div>
-    )
 }
