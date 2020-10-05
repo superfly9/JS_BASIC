@@ -10,9 +10,9 @@ const seoul_lite = (value)=>({type:SEOUL_LITE,name:value})
 
 //3. middleWare
 const printLog = store => next => action => {
+    console.log('getState():',store.getState())
     console.log(`Prev State: ${JSON.stringify(store.getState())}`)
     const result = next(action);
-    console.log('result:',result);
     console.log(`Next State: ${JSON.stringify(store.getState())}`)
     return result;
 }
@@ -22,11 +22,15 @@ const printLog = store => next => action => {
 //2. Create reducer
 const reducer = (state=INITIAL_STATE,action) => {
     console.log('Reducer!')
-    if (action.type === SEOUL_LITE) {
-        return {
-            ...state,
-            name : action.name
-        }
+    const {type}=action;
+    switch (type) {
+        case SEOUL_LITE:
+            return {
+                ...state,
+                name : action.name
+            }
+        default:
+            return state
     }
 }
 

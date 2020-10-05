@@ -2,6 +2,7 @@ import React from 'react';
 import {createStore,applyMiddleware} from 'redux';
 
 const middleWare1 = store => next => action => {
+    //이름은 꼭 store,next,action아니어도 똑같이 실행
     console.log('mid1 start');
     const result = next(action); //middleware2 실행
     console.log('mid1 end');

@@ -1,4 +1,3 @@
-import React from 'react';
 import produce from 'immer';
 
 const prevState = {
@@ -17,7 +16,7 @@ const prevState = {
     },
     product: []
 }
-//reducer에서 사용할 객체를 immer통해 간편하게 새로 생성
+//reducer에서 사용할 객체를 immer통해 간편하게 새로 생성, 불변 객체 생성시 ...도 필요x
 const nextState  = produce(prevState,draft=>{
     draft.user.friends[0].age = 50
 })
@@ -32,13 +31,3 @@ console.log('prevState.user.friends[1] === nextState.user.friends[1]:',
 console.log('prevState.product === nextState.product:',
     prevState.product === nextState.product);
 
-
-
-
-export default function App () {
-    return (
-        <div>
-            리덕스야 리덕스
-        </div>
-    )
-}
