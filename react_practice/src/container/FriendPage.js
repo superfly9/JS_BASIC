@@ -7,7 +7,8 @@ export default function FriendPage () {
     const [friends,setFriends] = useState([]);
     const [ageLimit,setAgeLimit] = useState(MAX_AGE_LIMIT);
     
-    const friendsWithAgeLimit = friends.filter(value=>value.age<ageLimit);
+    const friendsWithAgeLimit = friends.filter(value=>value.age<=ageLimit);
+
     const onAdd = () =>{
         const friend = getNextFriend()
         setFriends([...friends,friend])
@@ -17,8 +18,8 @@ export default function FriendPage () {
             <button onClick={onAdd}>친구 추가</button>
             <h2>친구들아 안녕</h2>
             <SelectNumber 
-            limit_option={AGE_LIMIT_OPTION} 
             ageLimit={ageLimit}
+            limit_option={AGE_LIMIT_OPTION} 
             setAgeLimit={setAgeLimit}
             desc='세 이하만 보기'
             />

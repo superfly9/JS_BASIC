@@ -1,5 +1,20 @@
 import React,{useState} from 'react';
 
+//ex)
+const todos = [ 
+    { name : 'seoul' ,key : 1 ,done:false },
+    {name : 'lite' , key : 2 ,done:true},
+    {name : 'Korea' , key : 3 ,done:false}
+]
+
+function App () {
+    return (
+        <div>
+            <TodoList todos={todos} />
+        </div>
+    )
+}
+
 function TodoList({todos}) {
     const [doneList,setDoneList] = useState(todos.filter((item)=>item.done));
     function onChange (key,name) {

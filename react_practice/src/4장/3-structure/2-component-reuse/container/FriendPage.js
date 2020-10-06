@@ -3,6 +3,7 @@ import FriendList from './component/FriendList';
 import SelectNumber from './container/SelectNumber';
 import getNextFriend from './data';
 
+//로직 처리 및 데이터를 받아서 전달하는 기능
 export default function FriendPage () {
     const [friends,setFriends] = useState([]);
     const [ageLimit,setAgeLimit] = useState(MAX_AGE_LIMIT);
@@ -18,7 +19,6 @@ export default function FriendPage () {
             <h2>친구들아 안녕</h2>
             <SelectNumber 
             limit_option={AGE_LIMIT_OPTION} 
-            ageLimit={ageLimit}
             setAgeLimit={setAgeLimit}
             desc='세 이하만 보기'
             />

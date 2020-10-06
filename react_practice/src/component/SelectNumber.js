@@ -1,9 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 export default function SelectNumber ({limit_option,ageLimit,setAgeLimit,desc}) {
     const handleChange = (e) =>{
-        const {value} = e.target
-       setAgeLimit(Number(value))
+        const {value} = e.target;
+        setAgeLimit(Number(value))
     }   
     return (
         <div>
