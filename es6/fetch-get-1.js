@@ -1,11 +1,12 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 
 // fetch(url) => return Promise{<fullfilled> : Response객체} , Response : {status:number,ok:boolean,url:string....}
+// 즉, fetch(url)은 Promise{<fullfilled> : Response객체}를 반환, fetch(url).then(response=>response.json()).then(data=>data)을 해줘야 데이터가 포함된 Promise {<fullfilled> :data}를 반환
 // fetch().then(response=>response.json()) => return Promise {<fullfilled>:마지막 then에서 return하는 값(여기서는 response.json())}
 
-const result = fetch(url).then(data=>data.json())
-console.log(result)
-console.log(fetch(url));
+const result = fetch(url).then(response=>response.json())
+console.log(result) // Promise {<fullfilled> : [{},{}...]}
+console.log(fetch(url)); // Promise {<fullfilled> : {status:200,url:'https://jsonplaceholder.typicode.com/users', ok:true}}
 
 const option = {
     method : 'POST',

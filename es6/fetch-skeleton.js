@@ -4,6 +4,5 @@ function fetch (url,option) {
     })
 }
 const result= fetch(url,option)
-                .then(response=>{
-                    return response.json()})
+                .then(response=> response.json())
                 .then(data=>console.log(data));
