@@ -1,5 +1,12 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 
+// fetch(url) => return Promise{<fullfilled> : Response객체} , Response : {status:number,ok:boolean,url:string....}
+// fetch().then(response=>response.json()) => return Promise {<fullfilled>:마지막 then에서 return하는 값(여기서는 response.json())}
+
+const result = fetch(url).then(data=>data.json())
+console.log(result)
+console.log(fetch(url));
+
 const option = {
     method : 'POST',
     headers : {'Content-Type': 'application/json'},
@@ -9,8 +16,10 @@ const option = {
 const getFetch = fetch(url)                   
                     .then(response=>{
                         return response.json()})
-                    .then(data=>console.log(data))
+                    .then(data=>data)
                     .catch(err=>console.log('Fetch Error:',err));
+
+console.log(getFetch); // Promise{<fullfilled>:data(마지막 then이 return 해주는 data)}
 
 let data;
 (async ()=>{
