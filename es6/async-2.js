@@ -13,7 +13,7 @@ async function awaitSeoul () {
     const result = await 'Seoul Lite';
     return result;
 }
-console.log(awaitSeoul())  //  Promise {<pending>} =>browser console확인해보면 [[PromiseState]]: "fulfilled" [[PromiseResult]]: Object
+console.log(awaitSeoul())  //  Promise {<pending>} =>browser console확인해보면 [[PromiseState]]: "fulfilled" [[PromiseResult]]: 'Seoul Lite'
 
 const URL  ='https://jsonplaceholder.typicode.com/todos/1';
 

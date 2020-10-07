@@ -16,7 +16,7 @@ const postFetch = async (url,data) => {
       },
       //data to be posted on server
       body: JSON.stringify(data)
-    });
+    }); // Response {status,url,ok,redirected...}
   //convert response to Json format
   const myJson = await response.json();
   console.log('myJson:',myJson)
@@ -25,4 +25,6 @@ const postFetch = async (url,data) => {
   //return the response
   return myJson ;
 }
-console.log('post Result:',postFetch(url,postData))
+let data;
+console.log('post Result:',postFetch(url,postData).then(result=>console.log(result)));
+console.log(data);  

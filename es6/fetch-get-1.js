@@ -14,14 +14,6 @@ const option = {
     body : JSON.stringify({city:'Seoul-Lite'})
 }
 
-const getFetch = fetch(url)                   
-                    .then(response=>{
-                        return response.json()})
-                    .then(data=>data)
-                    .catch(err=>console.log('Fetch Error:',err));
-
-console.log(getFetch); // Promise{<fullfilled>:data(마지막 then이 return 해주는 data)}
-
 let data;
 (async ()=>{
     const response = await fetch(url); // Response {type:"cors",url:'' ,status:200....}
@@ -32,9 +24,21 @@ let data;
 })(url)
 console.log('Data:',data) // Data: undefined
 
+
+
+const getFetch = fetch(url)                   
+                    .then(response=>response.json())
+                    .then(data=>data)
+                    .catch(err=>console.log('Fetch Error:',err));
+
+console.log(getFetch); // Promise{<fullfilled>:data(마지막 then이 return 해주는 data)}
+
+
+//getFetch에 async추가
 const getFetch2 = async (url)=>{
-    const response = await fetch(url); // Reponse 객체
-    myJson = await response.json()
+    const response = await fetch(url); // Response {type: "cors", url: "https://jsonplaceholder.typicode.com/users", status: 200, ok: true, …}
+    myJson = await response.json(); // 내가 원하는 데이터,  [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+    console.log(response,myJson) 
     return myJson
 }
 // Promise{<pending>} = async()
