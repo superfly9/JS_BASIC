@@ -27,44 +27,39 @@ function swap (list,left,right) {
   [list[left],list[right]]= [list[right],list[left]];
 }
 
-function partition (list,left,right) {
-  let middle = Math.floor((left+right/2)),
-      pivot  = list[middle],
-      i = left,
-      j = right
-  while (i<=j) {
-    if (list[i]<pivot) {
-      i++
+function partition(items, left, right) {
+    var pivot   = items[Math.floor((right + left) / 2)], //middle element
+        i       = left, //left pointer
+        j       = right; //right pointer
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j); //sawpping two elements
+            i++;
+            j--;
+        }
     }
-    console.log('II:',i)
-    if (list[j]>pivot) {
-      j--
-    }
-    console.log('Before:','i:',i,'j:',j)
-    if (i<=j) {
-      swap(list,i,j);
-      i++;
-      j--
-    }
-  }
-
-  console.log('After:','i:',i,'j:',j)
-  return i
+    return i;
 }
 
-//in place방식
-function quickSort2 (list,left,right) {
-  let index;
-  if (list.length>1) {
-    index = partition(list,left,right);
-    if (left < index-1) {
-      quickSort2(list,left,index-1);
+function quickSort(items, left, right) {
+    var index;
+    if (items.length > 1) {
+        index = partition(items, left, right); //index returned from partition
+        if (left < index - 1) { //more elements on the left side of the pivot
+            quickSort(items, left, index - 1);
+        }
+        if (index < right) { //more elements on the right side of the pivot
+            quickSort(items, index, right);
+        }
     }
-    if (right>index) {
-      quickSort2(list,index,right)
-    }
-  }
-  return list;
+    return items;
 }
-let sortedArr = quickSort2(arr2,0,arr2.length-1)
-console.log('Sorted:',sortedArr)
+// first call to quick sort
+var sortedArray = quickSort(arr2, 0, arr2.length - 1);
+console.log(sortedArray); //prints [ 5, 6, 7, 8, 9, 10 ]

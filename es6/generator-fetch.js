@@ -17,5 +17,4 @@ async function getUserById () {
     user = await getUser(3);
     console.log(user); // Samantha
 }
-
 getUserById();
