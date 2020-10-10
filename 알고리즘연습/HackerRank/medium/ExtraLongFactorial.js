@@ -30,5 +30,4 @@ function extraLongFactorials(n) {
     }
     console.log(result.toString()) // 1024n.toString() === 1024
 }
-
 extraLongFactorials1(5)
