@@ -25,6 +25,10 @@ alice<score[i[이면 나머지 score값들은 score[i]보다 크기에 for문 �
 15  < 20
 */
 
+
+//참고했던 tip  : 
+//go from the lowest to highest and start at index that you checked last, 
+//last time that way you wont need to go through entire array every time!
 let score = [100,100 ,50, 40, 40, 20, 10];
 let alice = [5 ,25 ,50 ,120 ];
 function climbingLeaderboard1(scores, alice) {
@@ -48,3 +52,30 @@ function climbingLeaderboard1(scores, alice) {
 }
 
 console.log(climbingLeaderboard1(score,alice));
+
+
+//다른 사람의 풀이
+function climbingLeaderboard(scores, alice) {
+
+    console.log(scores, alice);
+
+    let positions = [];
+    let distScore = [...new Set(scores)];
+    let aliceIndex = 0;
+    let i = distScore.length - 1;
+    alice.forEach(element => {
+
+        while (i >= 0) {
+            if (element >= distScore[i]) {
+                i--;
+            } else {
+                positions.push(i + 2);
+                break;
+            }
+        }
+        if (i < 0) positions.push(1);
+
+    });
+
+    return positions;
+}
