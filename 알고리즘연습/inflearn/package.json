@@ -1,0 +1,15 @@
+{
+  "name": "inflearn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "53_괄호문자열.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
