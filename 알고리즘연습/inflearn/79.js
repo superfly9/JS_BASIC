@@ -13,20 +13,41 @@ l = [35, 39, 10, 20, 25, 27, 34]
 */
 const before= [10, 20, 25, 27, 34, 35, 39]; //기존 입력 값
 const after = [35, 39, 10, 20, 25, 27, 34]
-    //index    5=> 0  ( 5 + 2 = 7이고 7 % 7 = 0)
-    //         6 =>1  ( 6 + 2 = 8이고 8 % 7 = 1)
+    //index    5=> 0  ( 기존: 5 + rotation: 2 = 7이고 7 % 7 = 0)
+    //         6 =>1  ( 기존: 6 + rotation: 2 = 8이고 8 % 7 = 1)
 const n = 2;
 // 1. 순회된 배열을 만들어야 (새로운 배열을 만들어서) 2. newIndex = (원래 인덱스 + 2) % array.length
 function rotate(arr, rotation){
     let newArr = [];
     for (let i in arr) {
         // i의 type이 string이라니...당연히 숫자인줄 알았는디...
+        console.log(typeof i) // stirng이네,객체의 key타입이 string이라 그런 것 같다
         let newIndex = (Number(i) + rotation) % arr.length;
         newArr[newIndex] = arr[i];
-    }
+    }   
     let dif = newArr.map((_,i)=>Math.abs(arr[i]-newArr[i]));
     let minIndex = dif.indexOf(Math.min(...dif));
     return `최소값의 index :${minIndex} 순회 전 :${arr[minIndex]} 순회 후: ${newArr[minIndex]}`
 }
 
-console.log(rotate(before, n))
+// console.log(rotate(before, n))
+
+function rotate2 (arr,rotation) {
+    let result = [];
+    console.log('original:',arr);
+    let newArr = arr.slice(); // arr을 얉게 복사한 배열
+    for (let i = 0; i < rotation; i++) {
+        newArr.unshift(newArr.pop()); // for문 돌 때마다 가장 마지막 원소를 빼서 가장 처음에 넣어준다, 즉 가장 마지막원소가 맨 앞으로 옮겨짐
+        // [1,2,3] => [3,2,1]
+    }
+    console.log('after arr:',newArr)
+    for (let i in arr) {
+        result.push(Math.abs(arr[i]-newArr[i]));
+    }
+    let minIndex = result.indexOf(Math.min(...result));
+    let maxIndex = result.indexOf(Math.max(...result));
+    return `최댓값의 index :${maxIndex} 순회 전 :${arr[maxIndex]} 순회 후: ${newArr[maxIndex]}`
+    
+}
+
+console.log(rotate2([1,2,3,4],3));
