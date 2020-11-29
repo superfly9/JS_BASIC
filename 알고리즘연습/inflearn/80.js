@@ -74,11 +74,13 @@ function makeCombination (arr,n) {
         for (let i=0;i<arr.length;i++) {
             result.push(prefix + arr[i]);
             console.log('index:',i,prefix+arr[i],'result:',result)
+            // 0 'a' => 'a' 'bcd'
+            // 0 
             getStr (prefix+arr[i], arr.slice(i+1)) // arr.slice(i+1)이 getStr()의 arr이 되고, 갈수록 배열의 길이가 작아지므로 재귀 종료됨
         }
     }
     getStr('',arr);
-    return result.filter(v=>v.length === 3);
+    return result.filter(v=>v.length === n);
 }
 
 console.log(makeCombination('abcd'.split(''),3))
